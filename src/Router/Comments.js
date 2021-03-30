@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import Comment from "../components/Comment";
 import { getComment } from "../Redux/Action/userActivityAction";
 
 const Comments = ({ getComment, comment }) => {
   useEffect(() => {
     getComment();
   }, []);
+  const variant = ["danger", "Primary", "info"];
   return (
     <div>
-      {comment.map((ele) => {
-        return <div>{ele.email}</div>;
+      {/* <Comment /> */}
+      {comment.map((ele, index) => {
+        return <Comment item={ele} variant={variant[index % 3]} />;
       })}
     </div>
   );
