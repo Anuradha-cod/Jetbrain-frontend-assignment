@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { getAlbum } from "../Redux/Action/userActivityAction";
 import Album from "../components/Album";
 import { useLocation } from "react-router-dom";
+import Row from "react-bootstrap/Row";
+import { Container } from "react-bootstrap";
 
 const Albume = ({ getAlbum, album }) => {
   const search = useLocation().search;
   const limit = new URLSearchParams(search).get("limit");
-  console.log("anuradha", limit);
+  console.log(limit);
 
   useEffect(() => {
     getAlbum(limit);
@@ -16,11 +18,13 @@ const Albume = ({ getAlbum, album }) => {
   const variant = ["danger", "warning", "info"];
 
   return (
-    <div>
-      {album.map((ele, index) => {
-        return <Album item={ele} variant={variant[index % 3]} />;
-      })}
-    </div>
+    <Container fluid>
+      <Row>
+        {album.map((ele, index) => {
+          return <Album item={ele} variant={variant[index % 3]} />;
+        })}
+      </Row>
+    </Container>
   );
 };
 const mapStateToProps = (state) => ({
