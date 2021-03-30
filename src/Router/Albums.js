@@ -2,10 +2,15 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getAlbum } from "../Redux/Action/userActivityAction";
 import Album from "../components/Album";
+import { useLocation } from "react-router-dom";
 
 const Albume = ({ getAlbum, album }) => {
+  const search = useLocation().search;
+  const limit = new URLSearchParams(search).get("limit");
+  console.log("anuradha", limit);
+
   useEffect(() => {
-    getAlbum();
+    getAlbum(limit);
   }, []);
 
   const variant = ["danger", "warning", "info"];

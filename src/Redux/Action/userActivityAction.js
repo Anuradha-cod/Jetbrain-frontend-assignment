@@ -11,8 +11,11 @@ export const getComment = () => async (dispatch) => {
   dispatch({ type: GET_COMMENT, payload: res.data });
 };
 
-export const getAlbum = () => async (dispatch) => {
-  const res = await axios.get(baseUrl + "albums" + "?_limit=25");
+export const getAlbum = (limit) => async (dispatch) => {
+  if (limit <= 0 || limit < 10) {
+    limit = 10;
+  }
+  const res = await axios.get(baseUrl + "albums" + "?_limit=" + limit);
   dispatch({ type: GET_ALBUM, payload: res.data });
 };
 export const getPhotos = () => async (dispatch) => {
