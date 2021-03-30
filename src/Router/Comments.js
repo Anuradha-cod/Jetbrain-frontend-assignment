@@ -9,7 +9,7 @@ const Comments = ({ getComment, comment }) => {
   }, []);
   const variant = ["danger", "Primary", "info"];
   return (
-    <div>
+    <div className="grid-container">
       {/* <Comment /> */}
       {comment.map((ele, index) => {
         return <Comment item={ele} variant={variant[index % 3]} />;

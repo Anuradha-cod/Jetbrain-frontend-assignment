@@ -3,7 +3,7 @@ import { Card, Col } from "react-bootstrap";
 
 const Album = (props) => {
   return (
-    <Col xs="12" md="6" lg="4">
+    <Col xs="12" ms="6" md="4">
       <Card
         bg={props.variant ? props.variant : "info"}
         text="white"
